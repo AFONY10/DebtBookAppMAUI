@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:data="clr-namespace:TheDebtBook.data"
+             xmlns:ViewModel="clr-namespace:TheDebtBook.ViewModel"
+             x:Class="TheDebtBook.Views.MainPage">
+    <ContentPage.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="18" />
+
+        </Style>
+    </ContentPage.Resources>
+
+
+    <Grid RowDefinitions="1*, 9*, 1*"
+          ColumnDefinitions="*,*,*,*"
+          Padding="10, 50, 10, 10"
+          WidthRequest="500"
+          >
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Text="Name"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+        />
+        <Label Grid.Row="0"
+               Grid.Column="1"
+               Text="Role"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               />
+        <Label Grid.Row="0"
+               Grid.Column="2"
+               Text="Total Balance"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               />
+
+        <CollectionView Grid.Row="1"
+                        Grid.ColumnSpan="4"
+                        ItemsSource="{Binding People}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="Auto"
+                          ColumnDefinitions="*,*,*,*">
+                        
+                        <Label HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Grid.Column="0"
+                               Text="{Binding personInfo.Name}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                        
+                        <Label HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Grid.Column="1"
+                               Text="{Binding personInfo.Role}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                        
+                        <Label HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Grid.Column="2"
+                               Text="{Binding totalBalance}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                        
+                        <Button Grid.Column="3"
+                                Text="See more..."
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:Home}}, Path=NavigateToPersonCommand}"
+                                CommandParameter="{Binding personInfo.Id}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                Text="Add"
+                Command="{Binding NavigateToAddPersonCommand}">
+        </Button>
+        
+        
+    </Grid>
+</ContentPage>
+
+
+
+<!--<ScrollView>
+    <Grid RowDefinitions="*,*,*,*,*,*,*,*,*"
+          ColumnDefinitions="*,*,*"
+    >
+        <Button Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                BackgroundColor="Black"
+                Clicked="DetailButton"/>
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Text="fd"
+               HorizontalTextAlignment="Center"
+        />
+        <Label Grid.Row="0"
+               Grid.Column="1"
+               Text="Creditor"
+               HorizontalTextAlignment="Center"
+        />
+        <Label Grid.Row="0"
+               Grid.Column="2"
+               Text="200"
+               HorizontalTextAlignment="Center"/>
+    </Grid>
+</ScrollView>-->

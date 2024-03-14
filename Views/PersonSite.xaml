@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModel="clr-namespace:TheDebtBook.ViewModel"
+             xmlns:models="clr-namespace:TheDebtBook.models"
+             x:DataType="ViewModel:PersonView"
+             x:Class="TheDebtBook.Views.PersonSite">
+
+    <Grid RowDefinitions="1*,6*,1*,1*" 
+          ColumnDefinitions="*,*,*" 
+          Padding="10, 80, 10, 10"
+          WidthRequest="400">
+
+        <Label Grid.Row="0"
+               Grid.ColumnSpan="3" 
+               Text="{Binding Name}"/>
+
+        <CollectionView Grid.Row="1"
+                        Grid.ColumnSpan="3" 
+                        ItemsSource="{Binding Balances}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type models:Balance}">
+                    <Grid ColumnDefinitions="*,*" 
+                          HeightRequest="40">
+                        <Label Grid.Column="0" 
+                               Text="{Binding Amount}"/>
+                        <Button Grid.Column="1" 
+                                Text="Delete" 
+                                WidthRequest="80"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:PersonView}}, Path=DeleteBalanceCommand}" 
+                                CommandParameter="{Binding .}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="2" 
+                Grid.Column="0" 
+                Text="Delete Person"
+                Command="{Binding DeletePersonCommand}"/>
+        <Button Grid.Row="3" 
+                Grid.Column="0" 
+                Text="Add"
+                Command="{Binding AddBalanceCommand}"/>
+        <Entry Grid.Row="3" 
+               Grid.Column="2" 
+               Placeholder="Enter amount" 
+               Text="{Binding Amount}"/>
+
+    </Grid>
+
+</ContentPage>
