@@ -23,6 +23,7 @@ namespace TheDebtBook.ViewModel
             Balances = new ObservableCollection<Balance>();
             _database = new TheDebtBookDatabase();
             _navigate = new Navigate();
+            _personId = personId;
             _ = Initialize();
             _ = SetupCollection();
         }
