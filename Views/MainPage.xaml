@@ -89,28 +89,3 @@
 
 
 
-<!--<ScrollView>
-    <Grid RowDefinitions="*,*,*,*,*,*,*,*,*"
-          ColumnDefinitions="*,*,*"
-    >
-        <Button Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                BackgroundColor="Black"
-                Clicked="DetailButton"/>
-        <Label Grid.Row="0"
-               Grid.Column="0"
-               Text="fd"
-               HorizontalTextAlignment="Center"
-        />
-        <Label Grid.Row="0"
-               Grid.Column="1"
-               Text="Creditor"
-               HorizontalTextAlignment="Center"
-        />
-        <Label Grid.Row="0"
-               Grid.Column="2"
-               Text="200"
-               HorizontalTextAlignment="Center"/>
-    </Grid>
-</ScrollView>-->
