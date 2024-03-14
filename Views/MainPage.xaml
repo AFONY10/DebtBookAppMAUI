@@ -25,6 +25,7 @@
                VerticalOptions="Center"
                HorizontalOptions="Center"
         />
+        <!--ss-->
         <Label Grid.Row="0"
                Grid.Column="1"
                Text="Role"
