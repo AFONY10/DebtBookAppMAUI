@@ -45,28 +45,28 @@
                 <DataTemplate>
                     <Grid RowDefinitions="Auto"
                           ColumnDefinitions="*,*,*,*">
-                        
+
                         <Label HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Grid.Column="0"
                                Text="{Binding personInfo.Name}"
                                HorizontalOptions="Center"
                                VerticalOptions="Center"/>
-                        
+
                         <Label HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Grid.Column="1"
                                Text="{Binding personInfo.Role}"
                                HorizontalOptions="Center"
                                VerticalOptions="Center"/>
-                        
+
                         <Label HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Grid.Column="2"
                                Text="{Binding totalBalance}"
                                HorizontalOptions="Center"
                                VerticalOptions="Center"/>
-                        
+
                         <Button Grid.Column="3"
                                 Text="See more..."
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:Home}}, Path=NavigateToPersonCommand}"
@@ -81,35 +81,7 @@
                 Text="Add"
                 Command="{Binding NavigateToAddPersonCommand}">
         </Button>
-        
-        
+
+
     </Grid>
 </ContentPage>
-
-
-
-<!--<ScrollView>
-    <Grid RowDefinitions="*,*,*,*,*,*,*,*,*"
-          ColumnDefinitions="*,*,*"
-    >
-        <Button Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                BackgroundColor="Black"
-                Clicked="DetailButton"/>
-        <Label Grid.Row="0"
-               Grid.Column="0"
-               Text="fd"
-               HorizontalTextAlignment="Center"
-        />
-        <Label Grid.Row="0"
-               Grid.Column="1"
-               Text="Creditor"
-               HorizontalTextAlignment="Center"
-        />
-        <Label Grid.Row="0"
-               Grid.Column="2"
-               Text="200"
-               HorizontalTextAlignment="Center"/>
-    </Grid>
-</ScrollView>-->
