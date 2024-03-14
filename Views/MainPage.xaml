@@ -40,11 +40,14 @@
 
         <CollectionView Grid.Row="1"
                         Grid.ColumnSpan="4"
-                        ItemsSource="{Binding People}">
+                        ItemsSource="{Binding People}"
+                                     >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid RowDefinitions="Auto"
-                          ColumnDefinitions="*,*,*,*">
+                          ColumnDefinitions="*,*,*,*"
+                          RowSpacing="10"
+                          HeightRequest="50">
 
                         <Label HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
@@ -69,6 +72,8 @@
 
                         <Button Grid.Column="3"
                                 Text="See more..."
+                                WidthRequest="90"
+                                HeightRequest="10"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:Home}}, Path=NavigateToPersonCommand}"
                                 CommandParameter="{Binding personInfo.Id}"/>
                     </Grid>

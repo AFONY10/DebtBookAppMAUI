@@ -15,9 +15,9 @@ namespace TheDebtBook.service
             await Application.Current.MainPage.Navigation.PushAsync(new AddSite());
         }
 
-        public async Task ToAddHome(Page page)
+        public async Task ToAddHome()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new Page());
+            await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
         }
 
         public async Task Return()
