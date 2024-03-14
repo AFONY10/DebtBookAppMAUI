@@ -8,7 +8,7 @@ namespace TheDebtBook.ViewModel
     public partial class AddPersonView : ObservableObject
     {
         private readonly TheDebtBookDatabase _database;
-        private readonly Navigate _navigation;
+        private readonly Navigate _navigate;
 
         [ObservableProperty]
         private string _name;
@@ -22,18 +22,13 @@ namespace TheDebtBook.ViewModel
         public AddPersonView()
         {
             _database = new TheDebtBookDatabase();
-            _navigation = new Navigate();
+            _navigate = new Navigate();
         }
 
         [RelayCommand]
-        public void SetDebtor() => CreditorDebtor = "Debtor";
-
-        [RelayCommand]
-        public void SetCreditor() => CreditorDebtor = "Creditor";
-
-        [RelayCommand]
-        public async Task AddPerson()
+        public async Task SetDebtor()
         {
+            CreditorDebtor = "Debtor";
             var propertiesAreSet = await CheckProperties();
             if (!propertiesAreSet) return;
 
@@ -50,7 +45,30 @@ namespace TheDebtBook.ViewModel
 
             Name = CreditorDebtor = InitialBalance = string.Empty;
 
-            _navigation.Return();
+            _navigate.Return();
+        }
+
+        [RelayCommand]
+        public async Task SetCreditor()
+        {
+            CreditorDebtor = "Creditor";
+            var propertiesAreSet = await CheckProperties();
+            if (!propertiesAreSet) return;
+
+            var person = new Person(CreditorDebtor, Name);
+            var insertedPerson = await _database.AddPerson(person);
+            if (insertedPerson == 0) return;
+
+            var personId = await _database.GetIdOfLastPerson();
+            if (personId == -1) return;
+
+            var balance = new Balance(personId, int.TryParse(InitialBalance, out var parsedValue) ? parsedValue : 0);
+            var insertedBalance = await _database.AddBalance(balance);
+            if (insertedBalance == 0) return;
+
+            Name = CreditorDebtor = InitialBalance = string.Empty;
+
+            _navigate.Return();
         }
 
         private async Task<bool> CheckProperties()

@@ -14,6 +14,8 @@
 
         <Label Grid.Row="0"
                Grid.ColumnSpan="3" 
+               HorizontalTextAlignment="Center"
+               FontSize="30"
                Text="{Binding Name}"/>
 
         <CollectionView Grid.Row="1"
@@ -22,11 +24,13 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type models:Balance}">
                     <Grid ColumnDefinitions="*,*" 
-                          HeightRequest="40">
+                          HeightRequest="50">
                         <Label Grid.Column="0" 
                                Text="{Binding Amount}"/>
                         <Button Grid.Column="1" 
                                 Text="Delete" 
+                                HorizontalOptions="End"
+                                HeightRequest="40"
                                 WidthRequest="80"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:PersonView}}, Path=DeleteBalanceCommand}" 
                                 CommandParameter="{Binding .}"/>
@@ -37,10 +41,12 @@
 
         <Button Grid.Row="2" 
                 Grid.Column="0" 
+                HeightRequest="40"
                 Text="Delete Person"
                 Command="{Binding DeletePersonCommand}"/>
         <Button Grid.Row="3" 
                 Grid.Column="0" 
+                HeightRequest="40"
                 Text="Add"
                 Command="{Binding AddBalanceCommand}"/>
         <Entry Grid.Row="3" 
